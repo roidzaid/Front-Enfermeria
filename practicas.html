@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Carga de Practica</title>
+	<script src="js/variables.js"></script>
+	<script src="js/practicas.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+</head>
+<body>
+
+	<div class="alert alert-success" role="alert" id="practicaOk" align="center" style="display:none;">
+    	<h4 class="alert-heading">Bien!</h4>
+     	<p>Practica registrada</p>
+    </div>
+
+    <div class="alert alert-warning" role="alert" id="buscarP" align="center" style="display:none;">
+    	<h4 class="alert-heading">Recuerde!</h4>
+     	<p>Buscar el paciente primero</p>
+    </div>
+
+    <div class="alert alert-danger" role="alert" id="AlertaLote" align="center" style="display:none;">
+    	<h4 class="alert-heading">Recuerde!</h4>
+     	<p>Para vacunas antigripales debe ingresar el LOTE</p>
+    </div>
+
+    <div class="alert alert-danger" role="alert" id="AlertaVacunas" align="center" style="display:none;">
+    	<h4 class="alert-heading">Error!</h4>
+     	<p>Deba cargar los datos la vacuna a cargar</p>
+    </div>
+
+    <div class="alert alert-danger" role="alert" id="AlertaObservaciones" align="center" style="display:none;">
+    	<h4 class="alert-heading">Error!</h4>
+     	<p>Deba cargar observaciones para agregarlas a la práctica</p>
+    </div>
+
+	<h3 style="margin: 20px">CARGA DE PRÁCTICAS</h3>
+	
+	<hr />
+
+	<div style="margin:10px;">
+
+		<div style="text-align: center;">
+
+		  <div class="form-group row" style="margin-bottom: 5px; display: inline-block;">
+		    <!-- <label for="dni" class="col-sm-2 col-form-label">DNI</label> -->
+		    <div class="col-sm-10">
+		      <input id="dni" class="form-control" type="text" placeholder="Ingresar DNI">
+		    </div>
+		  </div>
+
+		  <div class="form-group row" style="margin-bottom: 5px; display: inline-block;">
+		    <div class="col-sm-10">
+		      <input name="buscarPaciente" id="buscarPaciente" type="button" class="btn btn-secondary" value="Buscar" onclick="buscarPaciente()">
+		    </div>
+		  </div>
+		</div>
+
+		<div>
+	 	  	<h3 id="datosPersonales" style="margin-bottom: 20px; text-align: start; display: none">Datos personales</h3>
+	 	</div>
+
+		<div id="tDatosPersonales" class="form-group row" style="margin-bottom: 5px; margin: 20px; display: none">
+		   <table id="tabPaciente" class="table table-success">
+				<thead>
+					<tr>
+						<th>DNI</th>
+						<th>Nombre</th>
+						<th>Apellido</th>
+						<th>Fec. Nacimiento</th>
+						<th>Sexo</th>
+						<th>Obra Social</th>
+						<th>Direccion</th>
+						<th>Localidad</th>
+						<th>Nombre Resp</th>
+						<th>Apellido Resp</th>
+						<th>DNI Resp</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyPaciente"></tbody>
+			</table>	
+		</div>
+	</div>
+
+	
+	<hr>
+
+	<div id="cargaVacunas" style="width:20%; display: inline-block; vertical-align: top; margin-left: 20px; display: none;">
+
+		<h4>Vacunas</h4>
+
+		<hr />
+
+	 	<div>
+		   <div class="form-group row" style="margin-bottom: 5px;">
+			    <label for="comboVacunas" class="col-sm-2 col-form-label">Vacuna</label>
+			    <div class="col-sm-10">
+			    	<select id="comboVacunas" class="form-control" onchange="buscarDosis();">
+                		<option selected></option>
+					</select>
+			    </div>
+			</div>
+
+			<div class="form-group row" style="margin-bottom: 5px;">
+			    <label for="comboDosis" class="col-sm-2 col-form-label">Dosis</label>
+			    <div class="col-sm-10">
+			    	<select id="comboDosis" class="form-control">
+                		<option selected></option>
+					</select>
+			    </div>
+			</div>
+
+			<div class="form-group row" style="margin-bottom: 5px;">
+			    <label for="comboMarcas" class="col-sm-2 col-form-label">Marca</label>
+			    <div class="col-sm-10">
+			    	<select id="comboMarcas" class="form-control">
+                		<option selected></option>
+					</select>
+			    </div>
+			</div>
+
+			<div class="form-group row" style="margin-bottom: 5px;">
+			    <label for="checkboxAtrasado" class="col-sm-2 col-form-label">Esq. Atrasado</label>
+			    <div class="col-sm-10">
+			    	<input class="form-contro" type="checkbox" value="" id="checkboxAtrasado" style="box-sizing: border-box; padding: 0; width: 40px; height: 30px;">
+			    </div>
+			</div>
+
+			<div class="form-group row" style="margin-bottom: 5px;">
+				<div class="col-sm-12">
+					<input name="agregarVacuna" id="agregarVacuna" type="button" class="btn btn-secondary" value="Agregar Vacuna" onclick="agregarVacuna()" style="width: 100%;">
+				</div>
+			</div>
+		</div>
+		</div>
+
+	<div id="cargaOtros" style="width:20%; display: inline-block; vertical-align: top; margin-left: 20px; display: none;">
+
+		<h4>Otros</h4>
+		<hr />
+
+		<div>
+			<div class="form-group row" style="margin-bottom: 10px;">
+				<!-- <label for="observacion" class="col-sm-2 col-form-label">Observaciones</label> -->
+				<div class="col-sm-12">
+			    	<input id="observacion" type="text" class="form-control" placeholder="Observaciones">
+				</div>
+			</div>
+
+
+			<div class="form-group row" style="margin-bottom: 5px;">
+				<div class="col-sm-12">
+					<input name="agregarOtros" id="agregarOtros" type="button" class="btn btn-secondary" value="Agregar Observaciones" onclick="agregarOtros()" style="margin: 5px; width: 100%;">
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div id="tPracticas" class="form-group row" style="margin-bottom: 5px; vertical-align: top; display: inline-block; width: 50%; margin-left: 20px; display: none;">			
+
+		<h4 id="tituloAgregarPracticas" style="display: none;">Prácticas</h4>
+
+		<hr />
+
+		<div style="overflow-y: scroll; min-height: 0px; max-height: 300px;">
+
+			<table id="tabPracticas" class="table table-success" style="text-align:center;">
+				<thead>
+					<tr>
+						<th>Práctica</th>
+						<th>Dosis</th>
+						<th>Marca</th>
+						<th>Lote</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody id="tbodyPracticas"></tbody>
+			</table>	
+		</div>
+	</div>
+
+	<div align="right" style="margin-left: 20px; margin-top: 10px">
+		<input name="guardarPracticas" id="btnGuardarPracticas" type="button" class="btn btn-secondary" value="Guardar" onclick="guardarPracticas()" style="float: right ; margin: 5px; margin-right: 10%; width: 100px; display: none;">
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			debugger;
+			var token = sessionStorage.getItem("token");
+
+			$.ajax({
+				type: "GET",
+				url: host + "vacunas",
+				headers: {
+					"Authorization": token,
+					"Content-Type":"application/json"
+				},
+				success: function(response)
+				{
+					debugger;
+					for (var i = 0; i < response.length; i++) {
+
+						var vacuna = response[i];
+
+						$("#comboVacunas").append('<option>'+vacuna+'</option>');
+					}
+				}
+			});
+
+		});
+
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			debugger;
+			var token = sessionStorage.getItem("token");
+
+			$.ajax({
+				type: "GET",
+				url: host + "marcas",
+				headers: {
+					"Authorization": token,
+					"Content-Type":"application/json"
+				},
+				success: function(response)
+				{
+					debugger;
+					for (var i = 0; i < response.length; i++) {
+
+						var marca = response[i];
+
+						$("#comboMarcas").append('<option>'+marca+'</option>');
+					}
+				}
+			});
+
+		});
+
+	</script>
+
+	<script type="text/javascript">
+      $(document).ready(function () {
+
+      	var paramstr = window.location.search.substr(1);
+        var paramarr = paramstr.split ("&");
+        var params = {};
+
+        for ( var i = 0; i < paramarr.length; i++) {
+            var tmparr = paramarr[i].split("=");
+            params[tmparr[0]] = tmparr[1];
+        }
+
+        debugger;
+        if (params["dni"] == "undefined" || params["dni"] == ""){
+        	$("#dni").val("");
+
+        	$("#datosPersonales").css("display", "none");
+					$("#tDatosPersonales").css("display", "none");
+					$("#cargaPracticas").css("display", "none");
+					$("#tituloAgregarPracticas").css("display", "none");
+					$("#btnGuardarPracticas").css("display", "none");
+
+        }else{	
+           	$("#dni").val(params["dni"]);
+           	buscarPaciente();
+        }
+
+      });
+    </script>
+
+</body>
+<!-- <footer style="width: 100%; height: 80px;">
+
+	<div align="right" style="margin-left: 20px; margin-top: 10px">
+		<input name="guardarPracticas" id="btnGuardarPracticas" type="button" class="btn btn-secondary" value="Guardar" onclick="guardarPracticas()" style="float: right ; margin: 5px; margin-right: 10%; width: 100px; display: none;">
+	</div>
+	
+</footer> -->
+</html>

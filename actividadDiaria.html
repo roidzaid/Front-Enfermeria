@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>actividadDiaria</title>
+	<script src="js/variables.js"></script>
+	<script src="js/lotes.js"></script>
+	<script src="js/practicas.js"></script>
+	<script src="js/reportes.js"></script>
+	<script src="js/login.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+</head>
+<body>
+
+	<h3 style="margin: 20px">ACTIVIDAD DE HOY</h3>
+	
+	<hr />
+	
+	
+		<div id="tActividad" class="form-group row" style="margin-bottom: 5px; margin: 20px;">
+
+			<table class="table table-success">
+			<thead>
+				<tr>
+					<th>Hora</th>
+					<th>Paciente</th>
+					<th>DNI</th>
+					<th>Práctica</th>
+				</tr>
+			</thead>
+				<tbody id="tbodyPracticasDiara"></tbody>
+			</table>	
+		</div>
+
+</body>
+
+
+
+<script type="text/javascript">
+		$(document).ready(function () {
+			debugger;
+	var token = sessionStorage.getItem("token");
+	var abat = sessionStorage.getItem("usuMod");
+	
+	$.ajax({
+		type: "GET",
+		url: host + "practicas/usuario/"+ abat,
+		headers: {
+			"Authorization": token,
+			"Content-Type":"application/json"
+		},
+		success: function(response)
+		{
+			debugger;
+
+			var list = response;  
+
+			var FechaHora = "";
+			var nombre = "";
+			var apellido = "";
+			var dni = "";
+			var observaciones = "";
+			var vacuna = "";
+			var dosis = "";
+			var tipoVacuna = "";
+
+			$("#tbodyPracticasDiara").empty();
+
+			for (var i = 0; i < list.length; i++) {
+
+				var FechaHora = list[i].fecha.slice(0, 10)+" "+list[i].fecha.slice(11, -11);
+				var nombre = list[i].nombre;
+				var apellido = list[i].apellido;
+				var dni = list[i].dni;
+				var observaciones = list[i].observaciones;
+				var vacuna = list[i].vacuna;
+				var dosis = list[i].dosis;
+
+				if (vacuna == ""){
+
+					$("#tbodyPracticasDiara").append('<tr><td>'+FechaHora+'</td><td>'+nombre+" "+apellido+'</td><td>'+dni+'</td><td >'+observaciones+'</td></tr>');
+				}else{
+					$("#tbodyPracticasDiara").append('<tr><td>'+FechaHora+'</td><td>'+nombre+" "+apellido+'</td><td>'+dni+'</td><td >'+vacuna+" "+dosis+'</td></tr>');
+				}
+			}
+
+		},
+		dataType: "json",
+		error: function(xhr, status, error) {
+			debugger;
+			alet("error al buscar lote activo");
+		}
+	});
+
+});
+		
+</script>
+
+
+</html>

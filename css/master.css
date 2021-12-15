@@ -1,0 +1,61 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    height: 100vh;
+
+}
+
+.login-box{
+    width: 320px;
+    height: 420px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    padding: 50px 20px;
+}
+
+
+h1{
+    margin: 0;
+    padding: 0 0 40px;
+    text-align: center;
+    font-size: 22px;
+}
+
+
+.login-box label{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display: block; 
+}
+
+
+.login-box input{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+.login-box input[type="text"]
+.login-box input[type="password"]{
+    padding: 10;
+    height: 40px;
+    font-size: 16px;
+
+}
+
+.login-box input[type="button"]{
+    border: none;
+    outline: none;
+    height: 40px;
+    font-size: 16px;
+}
+
+
+.login-box a:hover {
+    color: #fff;
+}
+

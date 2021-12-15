@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Formulario de login</title>
+	<script src="js/variables.js"></script>
+	<script src="js/login.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body background="imagenes/imagen-login.jpg"; style="height: 100% width: 100%; background-repeat: no-repeat;
+	background-size: cover;">
+	
+	<div class="alert alert-success" role="alert" id="bienvenido" align="center" style="display:none;">
+    	<h4 class="alert-heading">Bienvenido/a!!!</h4>
+     	<p></p>
+    </div>
+
+
+	<div class="alert alert-danger" role="alert" id="usuYPassNoExiste" align="center" style="display:none;">
+    	<h4 class="alert-heading">Error!</h4>
+     	<p>Usuario y clave no existen, Por favor vuelva a intentarlo</p>
+    </div>
+
+
+
+    <div style="background: #b7cea6; margin: 30px; width:30%">
+	<h1 style="margin-top: 15%; margin-left:30px;">GESTIÓN ENFERMERÍA</h1>
+	<!-- <div style="text-align: center; margin-top: 10%;">
+		<h3>Ingresar</h3>
+		<div style="text-align: center;">
+			<input style="width: 200px; height: 30px; margin: auto; margin-top: 20px"class="form-control" id="usuario" type="text" placeholder="Usuario">
+		</div>	
+		<div style="text-align: center;">
+			<input style="width: 200px; height: 30px; margin: auto; margin-top: 20px" class="form-control" id="pass" type="password" placeholder="Contraseña">
+		</div>	
+
+		<input style="width: 200px; margin: auto; margin-top: 20px" name="login" id="login" type="button" class="btn btn-secondary" value="Ingresar" onclick="login()">
+		
+	</div> -->
+
+
+	<div style="margin: 30px; font-size: 20px;">
+
+
+		<div class="form-group row" style="margin-bottom: 5px;">
+			
+			<label for="usuario" class="col-sm-3 col-form-label">Usuario:</label>
+			
+		    <div class="col-sm-9">
+		      <input type="text" class="form-control" id="usuario" placeholder="Usuario">
+		    </div>
+		</div>
+
+		<div class="form-group row" style="margin-bottom: 5px;">
+			<label for="pass" class="col-sm-3 col-form-label">Contraseña:</label>
+		    <div class="col-sm-9">
+		      <input type="password" class="form-control" id="pass" placeholder="Contraseña">
+		    </div>
+		</div>
+
+		<div style="text-align: right;">	
+			<div style="text-align: end; display: inline-block;">
+				<input style="width: 200px; margin: 30px" name="login" id="login" type="button" class="btn btn-secondary" value="Ingresar" onclick="login()">
+			</div>
+		</div>	
+
+	</div>
+	</div>
+	
+
+
+
+
+
+</body>
+
+</html>

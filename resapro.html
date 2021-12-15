@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Resapro</title>
+	<script src="js/variables.js"></script>
+	<script src="js/reportes.js"></script>
+	<script src="js/pdfs.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+	 -->
+
+</head>
+<body>
+
+	<div class="alert alert-danger" role="alert" id="fechasError" align="center" style="display:none;">
+    	<h4 class="alert-heading">Error!</h4>
+     	<p>Debe seleccionar fecha desde y hasta para generar el reporte</p>
+    </div>
+
+	
+	<h3 style="margin: 20px">RESAPRO</h3>
+	
+	
+	<hr />
+
+	<div style="margin: 20px; width: 30%">
+	
+		<div class="form-group row" style="margin-bottom: 5px;">
+			<label for="anioMes" class="col-sm-3 col-form-label">Mes y año:</label>
+		    <div class="col-sm-9">
+		      <input type="date" class="form-control" id="anioMes" placeholder="selecciones Mes y año">
+		    </div>
+		</div>
+
+
+		<div style="text-align: right;">	
+			<div style="text-align: end; display: inline-block;">
+				<input id="consultaHoja2" type="button" class="btn btn-secondary" value="Generar" onclick="resapro()" style="margin: 5px; width: 100px;">
+			</div>
+
+			<div style="text-align: end; display: inline-block;">
+				<input id="elementH" type="button" class="btn btn-secondary" value="PDF" onclick="resaproPDF()" style="margin: 5px; width: 100px;">
+			</div>
+		</div>	
+
+	</div>
+	<hr />
+	
+
+
+	<div style="text-align:center; margin: 20px;">
+
+		<table id="tableAtrasadas" class="table table-bordered" style="font-size: 10px; width: 100%;">
+		<thead>
+			
+			<tr>
+				<th align="center" COLSPAN="1" style="width: 200px;">Nombre y Apellido</th>
+				<th align="center" ROWSPAN="1">N°/ Tipo doc.</th>
+				<th align="center" ROWSPAN="1" style="width: 200px;">Adulto Responsable</th>
+				<th align="center" ROWSPAN="1">Edad</th>
+				<th align="center" ROWSPAN="2">O. Social</th>
+				<th align="center" COLSPAN="1">BCG</th>
+				<th align="center" COLSPAN="3">HEP.B</th>
+				<th align="center" COLSPAN="3">VCN 13</th>
+				<th align="center" COLSPAN="3">PENTAVALENTE</th>
+				<th align="center" COLSPAN="4">SALK/IPV</th>
+				<th align="center" COLSPAN="2">ROTA VIRUS</th>
+				<th align="center" COLSPAN="4">MENINGOCOCO</th>
+				<th align="center" COLSPAN="1">ANTIGRIPAL</th>
+				<th align="center" COLSPAN="2">TRIPLEVIRAL</th>
+				<th align="center" COLSPAN="1">HEP.A</th>
+				<th align="center" COLSPAN="1">VARICELA</th>
+				<th align="center" ROWSPAN="2">DTP Hib</th>
+				<th align="center" ROWSPAN="2">DTP</th>
+				<th align="center" COLSPAN="1">DTP Ac.</th>
+				<th align="center" COLSPAN="2">HPV</th>
+				<th align="center" ROWSPAN="2">D.T</th>
+				<th align="center" ROWSPAN="2">S.R</th>
+				
+
+
+			</tr>
+			<tr>
+				<th align="center" style="width: 200px;">Domicilio</th>
+				<th align="center">Fecha de Nac</th>
+				<th align="center" style="width: 200px;">Nom y Ape / doc</th>
+				<th align="center">sexo</th>
+				<th align="center">UD</th>
+				<th align="center">1°</th>
+				<th align="center">2°</th>
+				<th align="center">3°</th>
+				<th align="center">1°</th>
+				<th align="center">2°</th>
+				<th align="center">3°</th>
+				<th align="center">1°</th>
+				<th align="center">2°</th>
+				<th align="center">3°</th>
+				<th align="center">1°</th>
+				<th align="center">2°</th>
+				<th align="center">3°</th>
+				<th align="center">R</th>
+				<th align="center">1°</th>
+				<th align="center">2°</th>
+				<th align="center">1°</th>
+				<th align="center">2°</th>
+				<th align="center">3°</th>
+				<th align="center">R</th>
+				<th align="center">DA</th>
+				<th align="center">1°</th>
+				<th align="center">2°</th>
+				<th align="center">U.D</th>
+				<th align="center">U.D</th>
+				<th align="center">1°</th>
+				<th align="center">2°</th>
+			</tr>
+		</thead>
+			<tbody id="tbodyAtrasadas"></tbody>
+		</table>	
+	</div>
+
+	
+
+</body>
+
+
+</html>

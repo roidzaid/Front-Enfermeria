@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+<head>
+	<meta charset="utf-8">
+	<title>Inicio</title>
+	<script src="js/variables.js"></script>
+	<script src="js/lotes.js"></script>
+	<script src="js/practicas.js"></script>
+	<script src="js/pacientes.js"></script>
+	<script src="js/login.js"></script>
+	<script src="js/redirecciones.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+</head>
+<body style="background: #b7cea6; height: 80%;">
+
+	<h1 style="text-align: center; margin: 10px">ENFERMERÍA - CAPS AZUCENA VILLAFLOR</h1>
+	<div style="text-align: end;">
+		<input id="abatar" style="font-size: 15px; background-color: transparent; border: 0" disabled>
+	</div>
+	
+	<hr />
+	
+		<div style="width:15%; display: inline-block; text-align: center; vertical-align: top;"; class="form-group">
+		
+
+			<div>
+				<input style="width: 200px; margin-bottom: 20px;" name="inicio" id="inicio" type="button" class="btn btn-secondary" value="Inicio" onclick="inicio()">
+			</div>
+
+			<div>
+				<input style="width: 200px; margin-bottom: 20px;" name="practica" id="practica" type="button" class="btn btn-secondary" value="Prácticas" onclick="practicasIframe()">
+			</div>
+
+			<div>
+				<input style="width: 200px; margin-bottom: 20px;"name="buscarPaciente" id="buscarPaciente" type="button" class="btn btn-secondary" value="Pacientes" onclick="pacientesIframe()">
+			</div>
+
+			<div>
+				<input style="width: 200px;margin-bottom: 20px;"name="lote" id="lote" type="button" class="btn btn-secondary" value="Lotes" onclick="lotesIframe()">
+			</div>
+			<!-- <div>
+				<input style="width: 200px; margin-bottom: 20px;"name="reportes" id="reportes" type="button" class="btn btn-secondary" value="Reportes" onclick="reportes()">
+			</div> -->
+
+
+			  <div class="btn-group">
+			    <button style="width: 170px; margin-bottom: 20px;" type="button" class="btn btn-secondary">Reportes</button>
+			    <button style="width: 30px; height: max-content;" type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-reference="parent">
+			      <span class="sr-only">Toggle Dropdown</span>
+			    </button>
+			    <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+			      <a class="dropdown-item" onclick="esqAtrasadoIframe()">Esq. Atrasados</a>
+			      <a class="dropdown-item" onclick="hoja10Iframe()">Hoja 10</a>
+			      <a class="dropdown-item" onclick="hoja2Iframe()">Hoja 2</a>
+			      <a class="dropdown-item" onclick="resaproIframe()">Resapro</a>
+			      <div class="dropdown-divider"></div>
+			      <a class="dropdown-item" onclick="consultaPracticasIframe()">Consulta Prácticas</a>
+			    </div>
+			  </div>
+
+			<div>
+				<input style="width: 200px; margin-bottom: 20px;"name="salir" id="salir" type="button" class="btn btn-secondary" value="Salir" onclick="salir()">
+			</div>
+		</div>
+
+		<!-- <div style="width:70%; display: inline-block; vertical-align: top; margin-top: 10px; overflow-y: scroll; min-height: 0px; max-height: 500px;">
+
+			<table class="table table-success table-striped">
+			<thead>
+				<tr>
+					<th align="left" style="width: 140px;">Hora</th>
+					<th align="left" style="width: 140px;">Paciente</th>
+					<th align="left" style="width: 140px;">DNI</th>
+					<th align="left" style="width: 140px;">Práctica</th>
+				</tr>
+			</thead>
+				<tbody id="tbodyPracticasDiara"></tbody>
+			</table>	
+		</div> -->
+
+
+		<div class="embed-responsive embed-responsive-16by9" style="display: inline-block; width:84%; height:100%">
+			<iframe class="embed-responsive-item" type="text/html" id="frameInicio" src="actividadDiaria.html" allowfullscreen>
+  			</iframe>
+		</div>
+  		
+
+
+</body>
+
+<script type="text/javascript">
+		$(document).ready(function () {
+			debugger;
+			
+			var abat = sessionStorage.getItem("usuMod");
+			var token = sessionStorage.getItem("token");
+
+    		debugger;
+
+			$.ajax({
+				type: "GET",
+				url: host + "usuarios/"+ abat,
+				headers: {
+					"Authorization": token,
+					"Content-Type":"application/json"
+				},
+				success: function(response)
+				{
+					debugger;
+					sessionStorage.setItem("nomAbatar", response.nombre);
+					sessionStorage.setItem("apeAbatar", response.apellido);
+					$("#abatar").val(response.apellido + ", "+response.nombre);
+				}
+			});
+
+		});
+
+
+
+		
+</script>
+
+<!-- <script type="text/javascript">
+		$(document).ready(function () {
+			debugger;
+	var token = sessionStorage.getItem("token");
+	var abat = sessionStorage.getItem("usuMod");
+	
+	$.ajax({
+		type: "GET",
+		url: host + "practicas/usuario/"+ abat,
+		headers: {
+			"Authorization": token,
+			"Content-Type":"application/json"
+		},
+		success: function(response)
+		{
+			debugger;
+
+			var list = response;  
+
+			var FechaHora = "";
+			var nombre = "";
+			var apellido = "";
+			var dni = "";
+			var observaciones = "";
+			var vacuna = "";
+			var dosis = "";
+			var tipoVacuna = "";
+
+			$("#tbodyPracticasDiara").empty();
+
+			for (var i = 0; i < list.length; i++) {
+
+				var FechaHora = list[i].fecha.slice(0, 10)+" "+list[i].fecha.slice(11, -11);
+				var nombre = list[i].nombre;
+				var apellido = list[i].apellido;
+				var dni = list[i].dni;
+				var observaciones = list[i].observaciones;
+				var vacuna = list[i].vacuna;
+				var dosis = list[i].dosis;
+
+				if (vacuna == ""){
+
+					$("#tbodyPracticasDiara").append('<tr><td>'+FechaHora+'</td><td>'+nombre+" "+apellido+'</td><td>'+dni+'</td><td >'+observaciones+'</td></tr>');
+				}else{
+					$("#tbodyPracticasDiara").append('<tr><td>'+FechaHora+'</td><td>'+nombre+" "+apellido+'</td><td>'+dni+'</td><td >'+vacuna+" "+dosis+'</td></tr>');
+				}
+			}
+
+		},
+		dataType: "json",
+		error: function(xhr, status, error) {
+			debugger;
+			alet("error al buscar lote activo");
+		}
+	});
+
+});
+		
+</script> -->
+
+	
+
+
+</html>

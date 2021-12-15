@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Hoja10</title>
+	<script src="js/variables.js"></script>
+	<script src="js/reportes.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	
+</head>
+<body>
+
+	<h3 style="margin: 20px">HOJA 10</h3>
+	
+	<hr />
+
+	<div style="margin: 20px; width: 30%">
+
+
+		<div class="form-group row" style="margin-bottom: 5px;">
+			<label for="anioMes" class="col-sm-3 col-form-label">Mes y año:</label>
+		    <div class="col-sm-9">
+		      <input type="date" class="form-control" id="anioMes" placeholder="selecciones Mes y año">
+		    </div>
+		</div>
+
+
+	<!-- <div style="text-align: center;">
+	<div style="margin-top: 10px; display: inline-block;">	
+			<label style="font-size: 20px;">selecciones Mes y año:</label>
+			<input id="anioMes" type="date">
+		</div>
+ -->
+
+		<div style="text-align: right;">	
+			<div style="text-align: end; display: inline-block;">
+				<input id="consultaHoja10" type="button" class="btn btn-secondary" value="Generar" onclick="consultaHoja10()" style="margin: 5px; width: 100px;">
+			</div>
+
+			
+		</div>	
+
+
+	<!-- 	<div style="text-align: end; display: inline-block;">
+			<input id="consultaHoja10" type="button" class="btn btn-secondary" value="Generar" onclick="consultaHoja10()" style="margin: 5px; width: 100px;">
+		</div> -->
+	</div>
+	
+	
+
+	<div style="text-align: center;">
+		
+		
+		
+
+		<div style="margin-top: 10px;">	
+
+			<hr>
+			<div style="margin-top: 10px; width: 80%; margin-left: 10%;">	
+			<h6><b>VACUNAS NIÑOS/AS 2 MESES</b></h4>		
+
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">PENTAVALENTE DOSIS 1</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">PREVENAR 13 DOSIS 1</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">ROTAVIRUS DOSIS 1</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">IPV - SALK DOSIS 1</label>		
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyVacunasNiñes2Meses"></tbody>
+			</table>
+			</div>
+
+			<hr>
+			<div style="margin-top: 10px; width: 80%; margin-left: 10%;">	
+			<h6><b>VACUNA ANTIMENINGOCÓCICA (3 Y 5 MESES)</b></h4>		
+
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">MENINGOCOCO ACYW DOSIS 1</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">MENINGOCOCO ACYW DOSIS 2</label>		
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyVacunaAntimeningococica"></tbody>
+			</table>
+			</div>
+
+			<hr>
+			<div style="margin-top: 10px; width: 80%; margin-left: 10%;">
+			<h6><b>VACUNAS NIÑOS/AS 4 MESES</b></h4>		
+
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">PENTAVALENTE DOSIS 2</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">PREVENAR 13 DOSIS 2</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">ROTAVIRUS DOSIS 2</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">IPV - SALK DOSIS 2</label>		
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyVacunasNiñes4Meses"></tbody>
+			</table>
+			</div>
+
+			<hr>
+			<div style="margin-top: 10px; width: 80%; margin-left: 10%;">	
+			<h6><b>VACUNAS NIÑOS/AS 6 MESES</b></h4>
+
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">PENTAVALENTE DOSIS 3</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">IPV - SALK DOSIS 3</label>		
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyVacunasNiñes6Meses"></tbody>
+			</table>
+			</div>
+
+			<hr>
+			<div style="margin-top: 10px; width: 80%; margin-left: 10%;">	
+			<h6><b>VACUNAS NIÑOS/AS 12 MESES</b></h4>		
+
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">PREVENAR 13 (REFUERZO)</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">HEPATITIS A (ÚNICA DOSIS)</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">TRIPLE VIRAL - SRP DOSIS 1</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">ANTIGRIPAL (NIÑOS/AS 6 A 12 MESES)</label>		
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyVacunasNiñes12Meses"></tbody>
+			</table>
+			</div>
+
+			<hr>
+			<div style="margin-top: 10px; width: 80%; margin-left: 10%;">	
+			<h6><b>VACUNAS NIÑOS/AS 15 MESES</b></h4>		
+
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">MENINGOCOCO ACYW (REFUERZO)</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">VARICELA (ÚNICA DOSIS)</label>		
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyVacunasNiñes15Meses"></tbody>
+			</table>
+			</div>
+
+			<hr>
+			<div style="margin-top: 10px; width: 80%; margin-left: 10%;">
+			<h6><b>VACUNAS NIÑOS/AS 18 MESES</b></h4>		
+
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">PENTAVALENTE (REFUERZO)</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">ANTIGRIPAL (NIÑOS/AS DE 12 A24 MESES)</label>		
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyVacunasNiñes18Meses"></tbody>
+			</table>
+			</div>
+
+			<hr>
+			<div style="margin-top: 10px; width: 80%; margin-left: 10%;">
+			<h6><b>TRIPLE VIRAL NIÑOS/AS 2 A 4 AÑOS</b></h4>		
+
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">TRIPLE VIRAL NIÑOS/AS 2 A 4 AÑOS</label>		
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyTripleViralNiñes2a4Años"></tbody>
+			</table>
+			</div>
+
+			<hr>
+			<div style="margin-top: 10px; width: 80%; margin-left: 10%;">
+			<h6><b>PENTAVALENTE EN NIÑOS/AS DE 2 A 4 AÑOS</b></h4>		
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">PENTAVALENTE EN NIÑOS/AS DE 2 A 4 AÑOS</label>		
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyPentavalenteNiñes2a4Años"></tbody>
+			</table>
+			</div>
+
+			<hr>
+			<h6><b>VACUNAS NIÑOS/AS INGRESO ESCOLAR</b></h4>		
+
+			<div style="margin-top: 10px; width: 80%; margin-left: 10%;">	
+
+			<div style="margin-top: 10px; display: inline-block;">	
+			<label style="font-size: 12px;">INGRESO ESCOLAR</label>
+			
+				<table class="table table-bordered", style="width: auto; margin: auto">
+					<thead>
+						<tr>
+							<th>
+								<label style="font-size: 12px;">IPV - SALK (REFUERZO)</label>		
+							</th>
+							<th>
+								<label style="font-size: 12px;">TRIPLE VIRAL - SRP DOSIS 2</label>		
+							</th>
+							<th>
+								<label style="font-size: 12px;">TRIPLE BACTERIANA - DPT (REFUERZO)</label>		
+							</th>
+						</tr>
+					</thead>
+					<tbody id="tbodyVacunasIngresoEscolar"></tbody>
+				</table>
+				</div>
+				
+				
+
+				<div style="margin-top: 10px; display: inline-block; vertical-align: top;">	
+				<label style="font-size: 12px;">DOBLE BACTERIANA NIÑOS/AS 7 A 9 AÑOS</label>
+
+					<table class="table table-bordered", style="width: auto; margin: auto">
+						<thead>
+							<tr>
+								<th>
+									<label style="font-size: 12px;">DOSIS 1</label>		
+								</th>
+								<th>
+									<label style="font-size: 12px;">DOSIS 2</label>		
+								</th>
+								<th>
+									<label style="font-size: 12px;">DOSIS 3</label>		
+									
+								</th>
+							</tr>
+						</thead>
+						<tbody id="tbodyDobleBacterianaIngresoEscolar"></tbody>
+					</table>
+				</div>
+				
+			</div>
+
+			
+			<hr>
+			<div style="margin-top: 10px; width: 80%; margin-left: 10%;">		
+			<h6><b>VACUNAS NIÑOS/AS 11 AÑOS</b></h4>		
+
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">MENINGOCOCO ACYW (ÚNICA DOSIS)</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">TRIPLE BACTERIANA ACELULAR - dTpa (REFUERZO)</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">HPV MUJERES - DOSIS 1</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">HPV MUJERES - DOSIS 2</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">HPV VARONES - DOSIS 1</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">HPV VARONES - DOSIS 2</label>		
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyVacunasNiñes11Años"></tbody>
+			</table>
+			</div>
+
+
+			<hr>
+			<h6><b>VACUNAS EN EL EMBARAZO</b></h4>		
+
+			<div style="margin-top: 10px; width: 80%; margin-left: 10%;">			
+		
+			<div style="margin-top: 10px; display: inline-block;">	
+			<label style="font-size: 12px;">EMBARAZO</label>	
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">ANTIGRIPAL</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">TRIPLE BACTERIANA ACELULAR - dTpa</label>		
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyVacunasEmbarazo"></tbody>
+			</table>
+			</div>			
+							
+			<div style="margin-top: 10px; display: inline-block;">
+			<label style="font-size: 12px;">HEPATITIS B</label>
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">DOSIS 1</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 2</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 3</label>		
+							
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyVacunasEmbarazoHepB"></tbody>
+			</table>
+			</div>
+
+			<div style="margin-top: 10px; display: inline-block;">
+			<label style="font-size: 12px;">DOBLE ADULTXS EMBARAZADAS</label>
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">DOSIS 1</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 2</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 3</label>		
+							
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyVacunasEmbarazoDT"></tbody>
+			</table>
+			</div>
+			</div>
+			
+			<hr>
+			<div style="margin-top: 10px; width: 80%; margin-left: 10%;">		
+			<h6><b>VACUNAS EN EL PUERPERIO</b></h4>		
+
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">ANTIGRIPAL</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">TRIPLE BACTERIANA ACELULAR - dTpa</label>		
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyVacunasPuerperio"></tbody>
+			</table>
+			</div>
+
+			<hr>
+			<h6><b>VACUNAS ADULTXS</b></h4>
+
+			<div style="margin-top: 10px; width: 80%; margin-left: 10%;">
+			
+			<div style="margin-top: 10px; display: inline-block;">
+			<label style="font-size: 12px;">HEPATITIS B 21 A 40 AÑOS</label>
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">DOSIS 1</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 2</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 3</label>		
+							
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyVacunasAdultosHepB21a40Años"></tbody>
+			</table>
+			</div>
+
+			<div style="margin-top: 10px; display: inline-block;">
+			<label style="font-size: 12px;">HEPATITIS B + 40 AÑOS</label>
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">DOSIS 1</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 2</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 3</label>		
+							
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyVacunasAdultosHepB40Años"></tbody>
+			</table>		
+			</div>
+
+			<div style="margin-top: 10px; display: inline-block;">
+			<label style="font-size: 12px;">DOBLE ADULTXS + 17 AÑOS</label>		
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">DOSIS 1</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 2</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 3</label>		
+							
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyVacunasAdultosDT17Años"></tbody>
+			</table>	
+			</div>
+			
+			<div style="margin-top: 10px; display: inline-block;">			
+			<label style="font-size: 12px;">TRIPLE VIRAL 1 +18</label>	
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">DOSIS 1</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 2</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 3</label>		
+							
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyVacunasAdultosTripleViral18Años"></tbody>
+			</table>	
+			</div>	
+						
+			</div>
+
+			<hr>
+			<div style="margin-top: 10px; width: 80%; margin-left: 10%;">
+			<h6><b>VACUNAS PERSONAL DE SALUD</b></h4>		
+
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">HEPATITIS B</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">ANTIGRIPAL</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">TRIPLE BACTERIANA ACELULAR - dTpa</label>		
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyVacunasPersonalSalud"></tbody>
+			</table>
+			</div>
+
+			<hr>
+			<div style="margin-top: 10px; width: 80%; margin-left: 10%;">
+			<h6><b>VACUNAS ADULTXS MAYORES DE 65 AÑOS</b></h4>		
+
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">PREVENAR 13</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">NEUMO 23 > 65</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">ANTIGRIPAL</label>		
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyVacunasMayores65Años"></tbody>
+			</table>
+			</div>
+
+			<hr>
+			<div style="margin-top: 10px; height: 50%; width: 50%; margin-left: 25%;">	
+			<h6><b>VACUNAS PERSONAS DENTRO GRUPO DE RIESGOS</b></h4>		
+
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">PREVENAR 13</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">NEUMO 23 < 65</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">ANTIGRIPAL</label>		
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyVacunasGrupoRiesgo"></tbody>
+			</table>
+			</div>
+
+			<hr>
+			<h6><b>OTRAS VACUNAS</b></h4>
+			<div style="margin-top: 10px; width: 80%; margin-left: 10%;">
+
+			<div style="margin-top: 10px; display: inline-block;">
+			
+			<label style="font-size: 12px;">TRIPLE VIRAL 7 A 18 AÑOS</label>
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">DOSIS 1</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 2</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 3</label>		
+							
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyOtrasVacunasTripleViral18Años"></tbody>
+			</table>	
+			</div>
+
+			<div style="margin-top: 10px; display: inline-block;">
+			<label style="font-size: 12px;">HEPATITIS B 2 A 4 AÑOS</label>		
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">DOSIS 1</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 2</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 3</label>		
+							
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyOtrasVacunasHepB2a4Años"></tbody>
+			</table>
+			</div>
+
+			<div style="margin-top: 10px; display: inline-block;">
+			<label style="font-size: 12px;">HEPATITIS B 5 A 9 AÑOS</label>		
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">DOSIS 1</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 2</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 3</label>		
+							
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyOtrasVacunasHepB5a9Años"></tbody>
+			</table>
+			</div>
+
+			<div style="margin-top: 10px; display: inline-block;">
+			<label style="font-size: 12px;">HEPATITIS B 10 A 12 AÑOS</label>
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">DOSIS 1</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 2</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 3</label>		
+							
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyOtrasVacunasHepB10a12Años"></tbody>
+			</table>
+			</div>
+
+			<div style="margin-top: 10px; display: inline-block;">
+			<label style="font-size: 12px;">HEPATITIS B 13 A 20 AÑOS</label>
+			<table class="table table-bordered", style="width: auto; margin: auto">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 12px;">DOSIS 1</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 2</label>		
+						</th>
+						<th>
+							<label style="font-size: 12px;">DOSIS 3</label>		
+							
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyOtrasVacunasHepB13a20Años"></tbody>
+			</table>
+			</div>			
+			</div>
+
+
+		</div>
+	</div>			
+
+</body>
+
+
+</html>

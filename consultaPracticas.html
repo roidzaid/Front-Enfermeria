@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Inicio</title>
+	<script src="js/variables.js"></script>
+	<script src="js/practicas.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	
+
+
+</head>
+<body>
+
+	<div class="alert alert-danger" role="alert" id="fechasError" align="center" style="display:none;">
+    	<h4 class="alert-heading">Error!</h4>
+     	<p>Debe seleccion el rango de fechas correctas</p>
+    </div>
+
+	
+	<h3 style="margin: 20px">CONSULTA DE PRÁCTICAS</h3>
+	
+	
+	<hr />
+	
+	<!-- <h3 style="text-align: left; margin-top: 20px; margin-left: 15px;">Buscar Prácticas</h3>
+	<div style="text-align: left; margin-top: 30px;">
+
+		<div style="margin-top: 10px; margin-left: 15px; display: inline-block;">
+			<label style="font-size: 20px;">DNI:</label>
+			<input id="dni" type="text" style="width : 200px; line-height: 15px;" placeholder="Ingresar DNI">					
+		</div>
+
+		<div style="margin-top: 10px; display: inline-block;">	
+			<label style="font-size: 20px;">Fecha desde:</label>
+			<input id="fechaDesde" class="form-control custom-select" type="date" style="line-height: 15px; width: 200px">
+		</div>
+
+		<div style="margin-top: 10px; display: inline-block;">	
+			<label style="font-size: 20px;">Fecha hasta:</label>
+			<input id="fechaHasta" class="form-control custom-select" type="date" style="line-height: 15px; width: 200px">
+		</div>
+
+		<div style="text-align: end; display: inline-block;">
+			<input id="bucarPractica" type="button" class="btn btn-secondary" value="Buscar" onclick="buscarPracticas()" style="margin: 5px; width: 100px;">
+		</div>
+		
+	</div> -->
+
+
+	<div style="margin: 20px; width: 30%">
+
+
+		<div class="form-group row" style="margin-bottom: 5px;">
+			<label for="dni" class="col-sm-3 col-form-label">DNI:</label>
+		    <div class="col-sm-9">
+		      <input type="text" class="form-control" id="dni" placeholder="Ingresar DNI">
+		    </div>
+		</div>
+
+		<div class="form-group row" style="margin-bottom: 5px;">
+			<label for="fechaHasta" class="col-sm-3 col-form-label">Fecha hasta:</label>
+		    <div class="col-sm-9">
+		      <input type="date" class="form-control" id="fechaHasta" placeholder="Fecha hasta">
+		    </div>
+		</div>
+
+		<div class="form-group row" style="margin-bottom: 5px;">
+			<label for="fechaDesde" class="col-sm-3 col-form-label">Fecha desde:</label>
+		    <div class="col-sm-9">
+		      <input type="date" class="form-control" id="fechaDesde" placeholder="Fecha desde">
+		    </div>
+		</div>
+
+		<div style="text-align: right;">	
+			<div style="text-align: end; display: inline-block;">
+				<input id="bucarPractica" type="button" class="btn btn-secondary" value="Buscar" onclick="buscarPracticas()" style="margin: 5px; width: 100px;">
+			</div>
+
+			
+		</div>	
+
+	</div>
+
+
+
+	<hr />
+	
+	<div style="vertical-align: top; margin: 20px; overflow-y: scroll; min-height: 0px; max-height: 400px;">
+
+		<table class="table table-success table-striped">
+		<thead>
+			<tr>
+				<th align="left" style="width: 140px;">Fecha y hora</th>
+				<th align="left" style="width: 140px; display:none;">Num Práctica</th>
+				<th align="left" style="width: 140px;">Paciente</th>
+				<th align="left" style="width: 140px;">DNI</th>
+				<th align="left" style="width: 140px;">Práctica</th>
+				<th align="left" style="width: 140px;">Profesional</th>
+			</tr>
+		</thead>
+			<tbody id="tbodyPracticas"></tbody>
+		</table>	
+	</div>
+
+</body>
+
+</footer>
+</html>

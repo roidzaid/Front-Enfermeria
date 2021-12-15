@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html style="width:100%;">
+<head>
+	<meta charset="utf-8">
+	<title>Carga de Lotes</title>
+	<script src="js/variables.js"></script>
+	<script src="js/lotes.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+</head>
+<body>
+
+	<div class="alert alert-success" role="alert" id="loteOK" align="center" style="display:none;">
+    	<h4 class="alert-heading">Bien!</h4>
+     	<p>Lote registrado</p>
+    </div>
+
+    <div class="alert alert-warning" role="alert" id="ErrorLote" align="center" style="display:none;">
+    	<h4 class="alert-heading">Error!</h4>
+     	<p>Debe cargar todos los datos del lote</p>
+    </div>
+
+    <div class="alert alert-warning" role="alert" id="buscarLote" align="center" style="display:none;">
+    	<h4 class="alert-heading">Cargar Lote!</h4>
+     	<p>No existe lote. Debe cargar uno nuevo</p>
+    </div>
+
+    <div class="alert alert-danger" role="alert" id="loteExiste" align="center" style="display:none;">
+    	<h4 class="alert-heading">Error!</h4>
+     	<p>Número de lote Existente. Verifiquelo y vuelva a carga</p>
+    </div>
+
+
+
+
+    <h3 style="margin: 20px">CARGA DE LOTES</h3>
+	
+	<hr />
+
+   
+ 	<div style="display: inline-block; width: 30%; margin-left: 20px; ">
+
+	 	<div>
+	 	  	<h3 style="margin-bottom: 20px; text-align: start;">Nuevo Lote</h3>
+	 	</div>
+
+		<div class="form-group row" style="margin-bottom: 5px;">
+		    <label for="comboVacunas" class="col-sm-2 col-form-label">Vacuna</label>
+		    <div class="col-sm-10">
+		    	<select id="comboVacunas" class="form-control" onchange="buscarDosis();">
+               		<option selected></option>
+				</select>
+		    </div>
+		</div>
+
+		<div class="form-group row" style="margin-bottom: 5px;">
+		    <label for="comboMarcas" class="col-sm-2 col-form-label">Marca</label>
+		    <div class="col-sm-10">
+		    	<select id="comboMarcas" class="form-control">
+               		<option selected></option>
+				</select>
+		    </div>
+		</div>
+
+		<div class="form-group row" style="margin-bottom: 10px;">	
+			
+			<label for="lote" class="col-sm-2 col-form-label">Lote</label>
+			<div class="col-sm-10">
+		    	<input id="lote" type="text" class="form-control">
+			</div>
+		</div>
+	</div>
+
+
+
+	<!-- <h1 style="text-align: center; margin-top: 20px">CARGA DE LOTES</h1>
+	<div style="text-align: end;">
+		<input id="abatar" style="font-size: 15px; background-color: transparent; border: 0" disabled>
+	</div>
+	<hr />
+	<div style="width:30%; display: inline-block; text-align: end; margin-top: 30px;"; class="form-group">
+
+		<div style="margin-top: 10px;">
+			<label style="font-size: 25px;">Vacuna:</label>
+			<select id="comboVacunas" class="form-control custom-select" style="line-height: 15px; width: 30%" onchange="buscarDosis();">
+               	<option selected></option>
+			</select>
+		</div>
+		<div style="margin-top: 10px;">
+			<label style="font-size: 25px;">Marca:</label>
+			<select id="comboMarcas" class="form-control custom-select" style="line-height: 15px; width: 30%">
+               	<option selected></option>
+			</select>
+		</div>
+		<div style="margin-top: 10px;">
+			<label style="font-size: 25px;">Lote:</label>
+			<input id="lote" type="text" style="width : 30%; font-size: 20px;" placeholder="Ingresar lote">
+		</div>
+
+	</div> -->
+
+	<div id="tLotes" class="form-group row" style="vertical-align: top; overflow-y: scroll; min-height: 0px; max-height: 500px; display: none; width: 60%; margin-left: 20px;">
+
+		<table class="table table-success" style="text-align:center;">
+		<thead>
+			<tr>
+				<th>Fecha de Alta</th>
+				<th>Vacuna</th>
+				<th>Marca</th>
+				<th>Lote</th>
+				<th>Estado</th>
+			</tr>
+		</thead>
+			<tbody id="tbodyLotes"></tbody>
+		</table>	
+	</div>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			debugger;
+			var token = sessionStorage.getItem("token");
+
+			$.ajax({
+				type: "GET",
+				url: host + "vacunas",
+				headers: {
+					"Authorization": token,
+					"Content-Type":"application/json"
+				},
+				success: function(response)
+				{
+					debugger;
+					for (var i = 0; i < response.length; i++) {
+
+						var vacuna = response[i];
+
+						$("#comboVacunas").append('<option>'+vacuna+'</option>');
+					}
+				}
+			});
+
+		});
+
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			debugger;
+			var token = sessionStorage.getItem("token");
+
+			$.ajax({
+				type: "GET",
+				url: host + "marcas",
+				headers: {
+					"Authorization": token,
+					"Content-Type":"application/json"
+				},
+				success: function(response)
+				{
+					debugger;
+					for (var i = 0; i < response.length; i++) {
+
+						var marca = response[i];
+
+						$("#comboMarcas").append('<option>'+marca+'</option>');
+					}
+				}
+			});
+
+		});
+
+	</script>
+	<!-- <script type="text/javascript">
+		$(document).ready(function () {
+			debugger;
+			
+			var nomAbatar = sessionStorage.getItem("nomAbatar");
+			var apeAbatar = sessionStorage.getItem("apeAbatar");
+
+			$("#abatar").val(nomAbatar + ", "+apeAbatar);
+			
+
+		});
+		
+	</script> -->
+
+
+</body>
+<footer style="width: 100%; height: 80px;">
+	<div align="right" style="margin-left: 20px; margin-top: 10px">
+		<input name="guardarLote" id="guardarLote" type="button" class="btn btn-secondary" value="Guardar" onclick="guardarLote()" style="float: right ; margin: 5px; margin-right: 10%; width: 100px;">
+		<input name="buscarLote" id="buscarLote" type="button"  class="btn btn-secondary"value="Buscar" onclick="buscarLote()" style="float: right ; margin: 5px; width: 100px;">
+		<input name="listarLotes" id="listarLotes" type="button" class="btn btn-secondary" value="Listar" onclick="listarlotes()" style="float: right; margin: 5px; width: 100px;">
+		<!-- input name="volver" id="volver" type="button" class="btn btn-light" value="Volver" onclick="volver()" style="float: right; margin: 5px; width: 100px;"> -->
+	</div>
+	
+</footer>
+</html>

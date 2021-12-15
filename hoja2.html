@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Hoja2</title>
+	<script src="js/variables.js"></script>
+	<script src="js/reportes.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	
+</head>
+<body>
+
+	
+	<h3 style="margin: 20px">HOJA 2</h3>
+	<hr />
+
+	<!-- <div style="text-align: center;">
+		
+		
+		<div style="margin-top: 10px; display: inline-block;">	
+			<label style="font-size: 20px;">selecciones Mes y año:</label>
+			<input id="anioMes" type="date">
+		</div>
+
+		<div style="text-align: end; display: inline-block;">
+			<input id="consultaHoja2" type="button" class="btn btn-secondary" value="Generar" onclick="consultaHoja2()" style="margin: 5px; width: 100px;">
+		</div>
+ -->
+
+
+	<div style="margin: 20px; width: 30%">
+
+		<div class="form-group row" style="margin-bottom: 5px;">
+			<label for="anioMes" class="col-sm-3 col-form-label">Mes y año:</label>
+		    <div class="col-sm-9">
+		      <input type="date" class="form-control" id="anioMes" placeholder="selecciones Mes y año">
+		    </div>
+		</div>
+
+
+		<div style="text-align: right;">	
+			<div style="text-align: end; display: inline-block;">
+				<input id="consultaHoja2" type="button" class="btn btn-secondary" value="Generar" onclick="consultaHoja2()" style="margin: 5px; width: 100px;">
+			</div>
+		</div>	
+	</div>
+
+	<hr />
+
+	<div style="text-align: center;">
+		<div style="margin-top: 10px;">	
+
+			
+			<div style="margin-top: 10px; display: inline-block;">	
+			<label style="font-size: 15px;">Localidad</label>		
+
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 15px;">Morón</label>		
+						</th>
+						<th>
+							<label style="font-size: 15px;">La Matanza</label>		
+						</th>
+						<th>
+							<label style="font-size: 15px;">Merlo</label>		
+						</th>
+						<th>
+							<label style="font-size: 15px;">Otros</label>		
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyLocalidad"></tbody>
+			</table>
+			</div>
+
+
+			<div style="margin-top: 10px; display: inline-block;">	
+			<label style="font-size: 15px;">Obra social</label>		
+		
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>
+							<label style="font-size: 15px;">Si</label>		
+						</th>
+						<th>
+							<label style="font-size: 15px;">No</label>		
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tbodyOS"></tbody>
+			</table>
+			</div>
+
+			<div style="margin-top: 10px; display: inline-block;">	
+				<div style="margin-top: 10px;">	
+					<label style="font-size: 15px;">Edad y Sexo</label>		
+				</div>
+
+			
+				<div style="margin-top: 10px; display: inline-block;">	
+				<label style="font-size: 15px;">< 1</label>
+				<table class="table table-bordered" style="width:100%;">
+					<thead>
+						<tr>
+							<th>
+								<label style="font-size: 15px;">V</label>		
+							</th>
+							<th>
+								<label style="font-size: 15px;">M</label>		
+							</th>
+						</tr>
+					</thead>
+					<tbody id="tbodyMenor1"></tbody>
+				</table>
+				</div>		
+	
+				<div style="margin-top: 10px; display: inline-block;">	
+				<label style="font-size: 15px;">1 a 4</label>
+				<table class="table table-bordered" style="width:100%;">
+					<thead>
+						<tr>
+							<th>
+								<label style="font-size: 15px;">V</label>		
+							</th>
+							<th>
+								<label style="font-size: 15px;">M</label>		
+							</th>
+						</tr>
+					</thead>
+					<tbody id="tbody1a4"></tbody>
+				</table>
+				</div>				
+	
+				<div style="margin-top: 10px; display: inline-block;">	
+				<label style="font-size: 15px;">5 a 9</label>
+				<table class="table table-bordered" style="width:100%;">
+					<thead>
+						<tr>
+							<th>
+								<label style="font-size: 15px;">V</label>		
+							</th>
+							<th>
+								<label style="font-size: 15px;">M</label>		
+							</th>
+						</tr>
+					</thead>
+					<tbody id="tbody5a9"></tbody>
+				</table>
+				</div>				
+		
+				<div style="margin-top: 10px; display: inline-block;">	
+				<label style="font-size: 15px;">10 a 14</label>
+				<table class="table table-bordered" style="width:100%;">
+					<thead>
+						<tr>
+							<th>
+								<label style="font-size: 15px;">V</label>		
+							</th>
+							<th>
+								<label style="font-size: 15px;">M</label>		
+							</th>
+						</tr>
+					</thead>
+					<tbody id="tbody10a14"></tbody>
+				</table>
+				</div>				
+		
+				<div style="margin-top: 10px; display: inline-block;">	
+				<label style="font-size: 15px;">15 a 19</label>
+				<table class="table table-bordered" style="width:100%;">
+					<thead>
+						<tr>
+							<th>
+								<label style="font-size: 15px;">V</label>		
+							</th>
+							<th>
+								<label style="font-size: 15px;">M</label>		
+							</th>
+						</tr>
+					</thead>
+					<tbody id="tbody15a19"></tbody>
+				</table>
+				</div>				
+		
+				<div style="margin-top: 10px; display: inline-block;">	
+				<label style="font-size: 15px;">20 a 34</label>
+				<table class="table table-bordered" style="width:100%;">
+					<thead>
+						<tr>
+							<th>
+								<label style="font-size: 15px;">V</label>		
+							</th>
+							<th>
+								<label style="font-size: 15px;">M</label>		
+							</th>
+						</tr>
+					</thead>
+					<tbody id="tbody20a34"></tbody>
+				</table>
+				</div>				
+	
+				<div style="margin-top: 10px; display: inline-block;">	
+				<label style="font-size: 15px;">35 a 49</label>
+				<table class="table table-bordered" style="width:100%;">
+					<thead>
+						<tr>
+							<th>
+								<label style="font-size: 15px;">V</label>		
+							</th>
+							<th>
+								<label style="font-size: 15px;">M</label>		
+							</th>
+						</tr>
+					</thead>
+					<tbody id="tbody35a49"></tbody>
+				</table>
+				</div>				
+		
+				<div style="margin-top: 10px; display: inline-block;">	
+				<label style="font-size: 15px;">50 a 64</label>
+				<table class="table table-bordered" style="width:100%;">
+					<thead>
+						<tr>
+							<th>
+								<label style="font-size: 15px;">V</label>		
+							</th>
+							<th>
+								<label style="font-size: 15px;">M</label>		
+							</th>
+						</tr>
+					</thead>
+					<tbody id="tbody50a64"></tbody>
+				</table>
+				</div>				
+		
+				<div style="margin-top: 10px; display: inline-block;">	
+				<label style="font-size: 15px;">> 65</label>
+				<table class="table table-bordered" style="width:100%;">
+					<thead>
+						<tr>
+							<th>
+								<label style="font-size: 15px;">V</label>		
+							</th>
+							<th>
+								<label style="font-size: 15px;">M</label>		
+							</th>
+						</tr>
+					</thead>
+					<tbody id="tbodyMayor65"></tbody>
+				</table>
+				</div>				
+				
+			</div>
+		</div>
+	</div>			
+
+	<div style="text-align: center;">
+		<div style="margin-top: 10px; display: inline-block;">	
+			<label style="font-size: 20px;">Localidades</label>
+			<input id="cantLoc" type="text" style="width : 90%; font-size: 15px; border: 0; background: white; text-align: center;">
+		</div>
+
+		<div style="margin-top: 10px; display: inline-block;">	
+			<label style="font-size: 20px;">Obras Sociales</label>
+			<input id="cantOS" type="text" style="width : 90%; font-size: 15px; border: 0; background: white; text-align: center;">
+		</div>
+
+		<div style="margin-top: 10px; display: inline-block;">	
+			<label style="font-size: 20px;">Edades</label>
+			<input id="cantEdades" type="text" style="width : 90%; font-size: 15px; border: 0; background: white; text-align: center;">
+		</div>
+	</div>
+	
+</body>
+
+</html>
+							
