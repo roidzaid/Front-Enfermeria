@@ -31,9 +31,16 @@
 	<div style="margin: 20px; width: 30%">
 	
 		<div class="form-group row" style="margin-bottom: 5px;">
-			<label for="anioMes" class="col-sm-3 col-form-label">Mes y año:</label>
-		    <div class="col-sm-9">
-		      <input type="date" class="form-control" id="anioMes" placeholder="selecciones Mes y año">
+			<label for="fechaDesde" class="col-sm-2 col-form-label">Desde:</label>
+		    <div class="col-sm-10">
+		      <input type="date" class="form-control" id="fechaDesde" placeholder="Fecha desde">
+		    </div>
+		</div>
+
+		<div class="form-group row" style="margin-bottom: 5px;">
+			<label for="fechaHasta" class="col-sm-2 col-form-label">Hasta:</label>
+		    <div class="col-sm-10">
+		      <input type="date" class="form-control" id="fechaHasta" placeholder="Fecha hasta">
 		    </div>
 		</div>
 
@@ -55,7 +62,7 @@
 
 	<div style="text-align:center; margin: 20px;">
 
-		<table id="tableAtrasadas" class="table table-bordered" style="font-size: 10px; width: 100%;">
+		<table id="tableResapro" class="table table-bordered" style="font-size: 10px; width: 100%;">
 		<thead>
 			
 			<tr>
@@ -77,7 +84,7 @@
 				<th align="center" COLSPAN="1">VARICELA</th>
 				<th align="center" ROWSPAN="2">DTP Hib</th>
 				<th align="center" ROWSPAN="2">DTP</th>
-				<th align="center" COLSPAN="1">DTP Ac.</th>
+				<th align="center" ROWSPAN="2">DTP Ac.</th>
 				<th align="center" COLSPAN="2">HPV</th>
 				<th align="center" ROWSPAN="2">D.T</th>
 				<th align="center" ROWSPAN="2">S.R</th>
@@ -119,7 +126,7 @@
 				<th align="center">2°</th>
 			</tr>
 		</thead>
-			<tbody id="tbodyAtrasadas"></tbody>
+			<tbody id="tbodyResapro"></tbody>
 		</table>	
 	</div>
 

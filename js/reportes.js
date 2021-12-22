@@ -372,21 +372,14 @@ function consultaRecuperos(){
 						mujer = "X";
 					};
 
-					debugger;
-					var cumpleanos_arr = list[i].fechaNac.split("-");
-    				var cumpleanos = new Date(cumpleanos_arr[2], cumpleanos_arr[1] - 1, cumpleanos_arr[0]);
-    				debugger;
-    				var ed = hoy.getFullYear() - cumpleanos.getFullYear();
-    				debugger;
-    				var m = hoy.getMonth() - cumpleanos.getMonth();
-				
-	    			if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
-	    				debugger;
-	    			    ed--;
-    				}
-    				debugger;
-					edad = ed;
+					
+					if(list[i].edadAños < 2){
+						edad = list[i].edadMeses + "M";	
+					}else{
+						edad = list[i].edadAños + "A";	
+					}
 
+   				
 					nacimiento = list[i].fechaNac;
 					vacuna = list[i].vacuna;
 
@@ -467,3 +460,157 @@ function consultaRecuperos(){
 
 
 };
+
+
+
+function resapro(){
+
+
+	debugger;
+	var datosOk = true;
+	if($("#fechaDesde").val() == "" || $("#fechaHasta").val() == ""){
+		datosOk = false;
+        $('#fechasError').css('display', 'block');
+       	$("#fechasError").fadeTo(2000, 500).slideUp(500, function(){
+       	$("#fechasError").slideUp(500);
+       	});
+	}
+
+	debugger;
+	var token = sessionStorage.getItem("token");
+
+	sessionStorage.setItem("desde", $("#fechaDesde").val());
+    sessionStorage.setItem("hasta", $("#fechaHasta").val());
+
+	if(datosOk){
+		debugger;
+		$.ajax({
+			type: "GET",
+			url: urlPracticas+"/resapro/"+$("#fechaDesde").val()+"/"+$("#fechaHasta").val(),
+			headers: {
+				"Authorization": token,
+				"Content-Type":"application/json"
+			},
+			success: function(response)
+			{
+				debugger;
+
+				var list = response;  
+				
+				
+				debugger;
+				$("#tbodyResapro").empty();
+
+				for (var i = 0; i < list.length; i++) {
+
+				debugger;
+				var colum1 = "";
+    			var colum2 = "";
+    			var colum3 = "";
+    			var colum4 = "";
+    			var obraSocial = "";
+    			var BCG = "";
+    			var Hep_B_1 = "";
+    			var Hep_B_2 = "";
+    			var Hep_B_3 = "";
+    			var VCN_13_1 = "";
+    			var VCN_13_2 = "";
+    			var VCN_13_3 = "";
+    			var Pentavalente_1 = "";
+    			var Pentavalente_2 = "";
+    			var Pentavalente_3 = "";
+    			var SALK_IPV_1 = "";
+    			var SALK_IPV_2 = "";
+    			var SALK_IPV_3 = "";
+    			var SALK_IPV_R = "";
+    			var Rotavirus_1 = "";
+    			var Rotavirus_2 = "";
+    			var Meningococo_1 = "";
+    			var Meningococo_2 = "";
+    			var Meningococo_3 = "";
+    			var Meningococo_R = "";
+    			var Antigripal = "";
+    			var Triple_Viral_1 = "";
+    			var Triple_Viral_2 = "";
+    			var Hep_A = "";
+    			var Varicela = "";
+    			var DTP_Hib = "";
+    			var DTP = "";
+    			var DTP_Ac = "";
+    			var HPV_1 = "";
+    			var HPV_2 = "";
+    			var DT = "";
+    			var SR = "";
+
+    			
+    			debugger;
+				colum1 = list[i].nomyApe;
+    			colum2 = list[i].dni;
+    			colum3 = list[i].nomyApeResponsable;
+    			colum4 = list[i].edad;
+    			obraSocial = list[i].obraSocial;
+    			BCG = list[i].bcg;
+    			Hep_B_1 = list[i].hep_B_1;
+    			Hep_B_2 = list[i].hep_B_2;
+    			Hep_B_3 = list[i].hep_B_3;
+    			VCN_13_1 = list[i].vcn_13_1;
+    			VCN_13_2 = list[i].vcn_13_2;
+    			VCN_13_3 = list[i].vcn_13_3;
+    			Pentavalente_1 = list[i].pentavalente_1;
+    			Pentavalente_2 = list[i].pentavalente_2;
+    			Pentavalente_3 = list[i].pentavalente_3;
+    			SALK_IPV_1 = list[i].salk_IPV_1;
+    			SALK_IPV_2 = list[i].salk_IPV_2;
+    			SALK_IPV_3 = list[i].salk_IPV_3;
+    			SALK_IPV_R = list[i].salk_IPV_R;
+    			Rotavirus_1 = list[i].rotavirus_1;
+    			Rotavirus_2 = list[i].rotavirus_2;
+    			Meningococo_1 = list[i].meningococo_1;
+    			Meningococo_2 = list[i].meningococo_2;
+    			Meningococo_3 = list[i].meningococo_3;
+    			Meningococo_R = list[i].meningococo_R;
+    			Antigripal = list[i].antigripal;
+    			Triple_Viral_1 = list[i].triple_Viral_1;
+    			Triple_Viral_2 = list[i].triple_Viral_2;
+    			Hep_A = list[i].hep_A;
+    			Varicela = list[i].varicela;
+    			DTP_Hib = list[i].dtp_Hib;
+    			DTP = list[i].dtp;
+    			DTP_Ac = list[i].dtp_Ac;
+    			HPV_1 = list[i].hpv_1;
+    			HPV_2 = list[i].hpv_2;
+    			DT = list[i].dt;
+    			SR = list[i].sr;
+					
+				
+    			debugger;
+					
+				$("#tbodyResapro").append('<tr><td>'+colum1+'</td><td>'+colum2+'</td><td>'+colum3+'</td><td>'+colum4+'</td><td>'+obraSocial+'</td><td ROWSPAN="2">'+BCG+'</td><td ROWSPAN="2">'+Hep_B_1+'</td><td ROWSPAN="2">'+Hep_B_2+'</td><td ROWSPAN="2">'+Hep_B_3+'</td><td ROWSPAN="2">'+VCN_13_1+'</td><td ROWSPAN="2">'+VCN_13_2+'</td><td ROWSPAN="2">'+VCN_13_3+'</td><td ROWSPAN="2">'+Pentavalente_1+'</td><td ROWSPAN="2">'+Pentavalente_2+'</td><td ROWSPAN="2">'+Pentavalente_3+'</td><td ROWSPAN="2">'+SALK_IPV_1+'</td><td ROWSPAN="2">'+SALK_IPV_2+'</td><td ROWSPAN="2">'+SALK_IPV_3+'</td><td ROWSPAN="2">'+SALK_IPV_R+'</td><td ROWSPAN="2">'+Rotavirus_1+'</td><td ROWSPAN="2">'+Rotavirus_2+'</td><td ROWSPAN="2">'+Meningococo_1+'</td><td ROWSPAN="2">'+Meningococo_2+'</td><td ROWSPAN="2">'+Meningococo_3+'</td><td ROWSPAN="2">'+Meningococo_R+'</td><td ROWSPAN="2">'+Antigripal+'</td><td ROWSPAN="2">'+Triple_Viral_1+'</td><td ROWSPAN="2">'+Triple_Viral_2+'</td><td ROWSPAN="2">'+Hep_A+'</td><td ROWSPAN="2">'+Varicela+'</td><td ROWSPAN="2">'+DTP_Hib+'</td><td ROWSPAN="2">'+DTP+'</td><td ROWSPAN="2">'+DTP_Ac+'</td><td ROWSPAN="2">'+HPV_1+'</td><td ROWSPAN="2">'+HPV_2+'</td><td ROWSPAN="2">'+DT+'</td><td ROWSPAN="2">'+SR+'</td></tr>');
+
+				debugger;
+				colum1 = list[i].domicilio;
+    			colum2 = list[i].fechaNac;
+    			colum3 = list[i].dniResponsable;
+    			colum4 = list[i].sexo;
+
+    			$("#tbodyResapro").append('<tr><td>'+colum1+'</td><td>'+colum2+'</td><td>'+colum3+'</td><td>'+colum4+'</td></tr>');
+
+				}
+
+
+			},
+			dataType: "json",
+			error: function(xhr, status, error) {
+				debugger;
+				alert("error al generar resapro");
+			}
+		});
+	
+	}
+
+	debugger;
+	$("#fechaDesde").val("");
+	$("#fechaHasta").val("");
+
+	
+}

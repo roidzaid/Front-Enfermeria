@@ -449,7 +449,7 @@ function buscarPracticas(){
 
 				for (var i = 0; i < list.length; i++) {
 
-					var FechaHora = list[i].fecha.slice(0, 10)+" "+list[i].fecha.slice(11, -11);
+					var FechaHora = list[i].fecha.slice(0, 10)+" "+list[i].fecha.slice(11, -13);
 					var idPractica = list[i].idPractica;
 					var nombre = list[i].nombre;
 					var apellido = list[i].apellido;
@@ -507,8 +507,8 @@ function buscarPracticas(){
 				$("#tbodyPracticas").empty();
 
 				for (var i = 0; i < list.length; i++) {
-
-					var FechaHora = list[i].fecha.slice(0, 10)+" "+list[i].fecha.slice(11, -11);
+					debugger;
+					var FechaHora = list[i].fecha.slice(0, 10)+" "+list[i].fecha.slice(11, -13);
 					var idPractica = list[i].idPractica;
 					var nombre = list[i].nombre;
 					var apellido = list[i].apellido;
@@ -566,7 +566,7 @@ function buscarPracticas(){
 
 					for (var i = 0; i < list.length; i++) {
 
-						var FechaHora = list[i].fecha.slice(0, 10)+" "+list[i].fecha.slice(11, -11);
+						var FechaHora = list[i].fecha.slice(0, 10)+" "+list[i].fecha.slice(11, -13);
 						var idPractica = list[i].idPractica;
 						var nombre = list[i].nombre;
 						var apellido = list[i].apellido;
@@ -624,7 +624,7 @@ function buscarPracticas(){
 
 						for (var i = 0; i < list.length; i++) {
 
-							var FechaHora = list[i].fecha.slice(0, 10)+" "+list[i].fecha.slice(11, -11);
+							var FechaHora = list[i].fecha.slice(0, 10)+" "+list[i].fecha.slice(11, -13);
 							var idPractica = list[i].idPractica;
 							var nombre = list[i].nombre;
 							var apellido = list[i].apellido;

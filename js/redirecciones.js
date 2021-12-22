@@ -41,3 +41,9 @@ function consultaPracticasIframe(){
 	parent.document.getElementById("frameInicio").setAttribute('src', "consultaPracticas.html");
 	
 }
+
+
+function resaproIframe(){
+
+	parent.document.getElementById("frameInicio").setAttribute('src', "resapro.html");
+}
