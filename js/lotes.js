@@ -31,6 +31,11 @@ function guardarLote(){
 	
 
 	if(datosOk){
+
+		if (sessionStorage.getItem("token") == null){
+			window.location = "solicitarToken.html";
+		}
+
 		var token = sessionStorage.getItem("token")
 
 		var loteModel = {
@@ -82,6 +87,10 @@ function guardarLote(){
 function buscarLote(){
 
 	debugger;
+	if (sessionStorage.getItem("token") == null){
+		window.location = "solicitarToken.html";
+	}
+
 	var token = sessionStorage.getItem("token");
 	
 	$.ajax({
@@ -123,6 +132,9 @@ function buscarLote(){
 
 function listarlotes(){
 
+	if (sessionStorage.getItem("token") == null){
+		window.location = "solicitarToken.html";
+	}
 
 	debugger;
 	var token = sessionStorage.getItem("token");

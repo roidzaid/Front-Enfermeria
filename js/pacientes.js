@@ -3,6 +3,11 @@ var urlPacientes = host + "pacientes";
 function buscarPaciente(){
 
 	debugger;
+
+	if (sessionStorage.getItem("token") == null){
+		window.location = "solicitarToken.html";
+	}
+
 	var token = sessionStorage.getItem("token");
 	
 	$.ajax({
@@ -49,6 +54,11 @@ function buscarPaciente(){
 function buscarPacienteEnPacientes(){
 
 	debugger;
+
+	if (sessionStorage.getItem("token") == null){
+		window.location = "solicitarToken.html";
+	}
+
 	var token = sessionStorage.getItem("token");
 	
 	$.ajax({
@@ -281,7 +291,16 @@ function guardarPaciente(){
 	
 
 	if(datosOk){
+		debugger;
+		
+		if (sessionStorage.getItem("token") == null){
+			window.location = "solicitarToken.html";
+		}
+
+
 		var token = sessionStorage.getItem("token")
+
+
 
 		debugger;
 	       	if($("#masculino").is(':checked')){
@@ -328,10 +347,10 @@ function guardarPaciente(){
 			nombre:$("#nombre").val().toUpperCase(),
 			apellido:$("#apellido").val().toUpperCase(),
 			dni:$("#dni").val(),
-			fechaNac:$("#fechaNac").val().toUpperCase(),
-			sexo:sexoAux.toUpperCase(),
-			obraSocial:obraSocialAux.toUpperCase(),
-			localidad:localidadAux.toUpperCase(),
+			fechaNac:$("#fechaNac").val(),
+			sexo:sexoAux,
+			obraSocial:obraSocialAux,
+			localidad:localidadAux,
 			direccion:$("#direccion").val().toUpperCase(),
 			nombreResponsable:$("#nombreResponsable").val().toUpperCase(),
 			apellidoResponsable:$("#apellidoResponsable").val().toUpperCase(),
@@ -490,6 +509,11 @@ function modificarPaciente(){
 	
 
 	if(datosOk){
+
+		if (sessionStorage.getItem("token") == null){
+			window.location = "solicitarToken.html";
+		}
+
 		var token = sessionStorage.getItem("token")
 
 		debugger;

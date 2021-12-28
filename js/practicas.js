@@ -50,7 +50,11 @@ function agregarVacuna() {
     }
 
 
-		debugger;
+	if (sessionStorage.getItem("token") == null){
+		window.location = "solicitarToken.html";
+	}
+
+	debugger;
 	var token = sessionStorage.getItem("token");
 	
 
@@ -159,6 +163,10 @@ function buscarDosis(){
 
 	$("#comboDosis").empty();
 
+	if (sessionStorage.getItem("token") == null){
+		window.location = "solicitarToken.html";
+	}
+
 	debugger;
 	var token = sessionStorage.getItem("token");
 
@@ -224,6 +232,10 @@ function limpiarTodo(){
 function guardarPracticas(){
 
 	debugger;
+
+	if (sessionStorage.getItem("token") == null){
+		window.location = "solicitarToken.html";
+	}
 	
 		var token = sessionStorage.getItem("token")
 		
@@ -416,6 +428,10 @@ function borrarPractica(){
 
 function buscarPracticas(){
 
+	if (sessionStorage.getItem("token") == null){
+		window.location = "solicitarToken.html";
+	}
+
 	debugger;
 	var token = sessionStorage.getItem("token");
 	
@@ -449,7 +465,7 @@ function buscarPracticas(){
 
 				for (var i = 0; i < list.length; i++) {
 
-					var FechaHora = list[i].fecha.slice(0, 10)+" "+list[i].fecha.slice(11, -13);
+					var FechaHora = list[i].fecha.slice(0, 10);
 					var idPractica = list[i].idPractica;
 					var nombre = list[i].nombre;
 					var apellido = list[i].apellido;
@@ -508,7 +524,7 @@ function buscarPracticas(){
 
 				for (var i = 0; i < list.length; i++) {
 					debugger;
-					var FechaHora = list[i].fecha.slice(0, 10)+" "+list[i].fecha.slice(11, -13);
+					var FechaHora = list[i].fecha.slice(0, 10);
 					var idPractica = list[i].idPractica;
 					var nombre = list[i].nombre;
 					var apellido = list[i].apellido;
@@ -566,7 +582,7 @@ function buscarPracticas(){
 
 					for (var i = 0; i < list.length; i++) {
 
-						var FechaHora = list[i].fecha.slice(0, 10)+" "+list[i].fecha.slice(11, -13);
+						var FechaHora = list[i].fecha.slice(0, 10);
 						var idPractica = list[i].idPractica;
 						var nombre = list[i].nombre;
 						var apellido = list[i].apellido;
@@ -624,7 +640,7 @@ function buscarPracticas(){
 
 						for (var i = 0; i < list.length; i++) {
 
-							var FechaHora = list[i].fecha.slice(0, 10)+" "+list[i].fecha.slice(11, -13);
+							var FechaHora = list[i].fecha.slice(0, 10);
 							var idPractica = list[i].idPractica;
 							var nombre = list[i].nombre;
 							var apellido = list[i].apellido;
@@ -670,6 +686,10 @@ function buscarPracticas(){
 };
 
 function buscarPaciente(){
+
+	if (sessionStorage.getItem("token") == null){
+		window.location = "solicitarToken.html";
+	}
 
 	debugger;
 	var token = sessionStorage.getItem("token");

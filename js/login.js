@@ -52,3 +52,37 @@ function inicio() {
     debugger;
     window.location = "inicio.html";
 }
+
+
+function solicitarToken(){
+
+    var url = host + 'usuarios/login';
+    var credentials = $("#usuario").val() + ":" + $("#pass").val();
+    var auth = "Basic " + btoa(credentials);
+    debugger;
+    
+    $.ajax({
+        type: "GET",
+        url: url,
+        headers: {
+            'Authorization':auth,
+            'Content-Type':'application/json'
+        },
+        success: function(response)
+        {
+            debugger;
+            sessionStorage.setItem("token", "Bearer " + response);
+            sessionStorage.setItem("usuMod", $("#usuario").val());
+            history.back(-1);
+        },
+        error: function(xhr, status, error) {
+            debugger;
+            $('#usuYPassNoExiste').css('display', 'block');
+            $("#usuYPassNoExiste").fadeTo(2000, 500).slideUp(500, function(){
+            $("#usuYPassNoExiste").slideUp(500);
+            });
+          
+        }
+    });
+    
+}

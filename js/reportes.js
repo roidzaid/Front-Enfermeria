@@ -39,6 +39,10 @@ function esqAtrasado()
 
 function consultaHoja2(){
 	
+	if (sessionStorage.getItem("token") == null){
+		window.location = "solicitarToken.html";
+	}
+
 		debugger;
 		var token = sessionStorage.getItem("token");
 		debugger;
@@ -128,6 +132,10 @@ function consultaHoja2(){
 
 
 function consultaHoja10(){
+
+	if (sessionStorage.getItem("token") == null){
+		window.location = "solicitarToken.html";
+	}
 	
 		debugger;
 		var token = sessionStorage.getItem("token");
@@ -329,6 +337,10 @@ function consultaRecuperos(){
        	});
 	}
 
+	if (sessionStorage.getItem("token") == null){
+		window.location = "solicitarToken.html";
+	}
+
 	debugger;
 	var token = sessionStorage.getItem("token");
 
@@ -474,6 +486,10 @@ function resapro(){
        	$("#fechasError").fadeTo(2000, 500).slideUp(500, function(){
        	$("#fechasError").slideUp(500);
        	});
+	}
+
+	if (sessionStorage.getItem("token") == null){
+		window.location = "solicitarToken.html";
 	}
 
 	debugger;
